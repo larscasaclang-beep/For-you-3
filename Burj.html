@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding: 40px;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: white;
+      color: #ff6f91;
+      font-weight: bold;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    button.item {
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #fff;
+      color: #ff6f91;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.item:hover {
+      transform: scale(1.05);
+      background: #ffe0e9;
+    }
+
+    #message {
+      margin-top: 25px;
+      font-size: 1.2em;
+      min-height: 60px;
+      transition: opacity 0.4s;
+    }
+
+    .heart {
+      font-size: 35px;
+      margin-top: 20px;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>For You ❤️</h1>
+  <p>Tap anything… 😊</p>
+
+  <div class="tabs">
+    <button onclick="showSection('love')">💖 Why I Love You</button>
+    <button onclick="showSection('future')">✨ Everything I Want With You</button>
+  </div>
+
+  <div class="container" id="buttons"></div>
+
+  <div id="message"></div>
+  <div class="heart">💖</div>
+
+  <script>
+    const reasons = [
+      "I love your smile 😊",
+      "You make my bad days better 🌈",
+      "You understand me like no one else 💭",
+      "Your laugh is my favorite sound 🎶",
+      "You support me always 💪",
+      "You are beautiful inside and out ✨",
+      "You make life exciting 🎉",
+      "I feel safe with you 🫶",
+      "You inspire me every day 🌟",
+      "I just love being with you ❤️"
+    ];
+
+    const futurePlans = [
+      "Travel across the country with you, getting lost and loving every second 🌍❤️",
+      "Go on random adventures with no plan, just you and me 🎒",
+      "Stay up late talking about everything and nothing 🌙",
+      "Fall asleep next to you and wake up smiling 💤",
+      "Go on late night drives with music and your hand in mine 🚗",
+      "Explore new places together and make memories everywhere 🏙️",
+      "Laugh with you until we can't breathe 😂",
+      "Spend whole days doing nothing but being together 💕",
+      "Watch sunsets and just exist in that moment with you 🌅",
+      "Travel the world and collect memories instead of things ✈️",
+      "Hold you close when you need it most 🫂",
+      "Go on cute dates and never get tired of you 💖",
+      "Try new food together and argue over what’s better 🍜",
+      "Take silly pictures together 📸",
+      "Build a life where we both feel safe and happy 🏡",
+      "Have deep conversations that last for hours 🧠",
+      "Support you through everything, no matter what 🤝",
+      "Celebrate every little moment with you 🎉",
+      "Grow together and become better for each other 🌱",
+      "Go to church every sunday and put God on the center of our relationship❤️"
+    ];
+
+    function showSection(type) {
+      const container = document.getElementById("buttons");
+      container.innerHTML = "";
+
+      let list = type === "love" ? reasons : futurePlans;
+
+      list.forEach((item, i) => {
+        const btn = document.createElement("button");
+        btn.className = "item";
+        btn.innerText = i + 1;
+        btn.onclick = () => showMessage(item);
+        container.appendChild(btn);
+      });
+    }
+
+    function showMessage(text) {
+      const message = document.getElementById("message");
+      message.style.opacity = 0;
+
+      setTimeout(() => {
+        message.innerText = text;
+        message.style.opacity = 1;
+      }, 200);
+    }
+
+    // load first section
+    showSection('love');
+  </script>
+
+</body>
+</html>
